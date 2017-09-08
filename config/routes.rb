@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  get 'doses/new'
-
-  get 'doses/create'
-
-  get 'doses/delete'
-
-  get 'cocktails/index'
-
-  get 'cocktails/show'
-
-  get 'cocktails/new'
-
-  get 'cocktails/create'
-
+    Rails.application.routes.draw do
+ resources :cocktails, only: [:show, :index, :new, :create] do
+  resources :doses, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    end
+  root "cocktails#index"
+  end
 end
