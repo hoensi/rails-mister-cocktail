@@ -16,10 +16,13 @@ cocktails = [
   {
     name: "Daiquiri",
     #picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-daiquiri.jpg"
+    },
+  {
+    name: "Moscow Mule",
+    #picture: "http://www.seriouseats.com/images/2015/03/20150323-cocktails-vicky-wasik-daiquiri.jpg"
     }
 ]
-
-ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum)
+ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rum ginger)
 ingredients.each { |ingredient| Ingredient.create(name: ingredient) }
 
 
