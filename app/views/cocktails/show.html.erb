@@ -2,11 +2,25 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <h1><%= @cocktail.name %></h1>
+      <h2>Ingedients</h2>
         <ul>
+
         <% @cocktail.doses.each do |dose| %>
-          <%= render 'doses/list_doses', dose: dose %>
+        <li>  <%= dose.description %> <%= dose.ingredient.name %> </li>
         <% end %>
-        <%= render 'doses/form' %>
+        <%= simple_form_for([@cocktail,@dose]) do |f| %>
+
+  <% if @dose.errors %>
+    <% @dose.errors.messages.each do |error|  %>
+      Error: <%= error  %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :description, placeholder: '20 cl of...' %>
+  <%= f.input :ingredient_id, collection: @ingredients %>
+
+  <%= f.submit 'Create!', class: 'btn btn-primary' %>
+<% end %>
 
       <%= link_to 'Back', cocktails_path %>
     </div>
